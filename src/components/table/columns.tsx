@@ -37,14 +37,16 @@ export const columns: ColumnDef<User>[] = [
                 <div className='flex gap-2'>
                     {row.getValue('name') ? (
                         <div className='flex gap-2'>
-                            <Avatar className='hover:scale-110 hover:cursor-pointer transition-transform'>
-                                <AvatarFallback className='dark:text-[#faf0d6] text-[#050f29] font-semibold transition-all'>
-                                    {(row.getValue('name') as string)
-                                        .split(' ')
-                                        .map((n: string) => n[0])
-                                        .join('')}
-                                </AvatarFallback>
-                            </Avatar>
+                            <Link href={`/users/${row.getValue('id')}`}>
+                                <Avatar className='hover:scale-110 hover:cursor-pointer transition-transform'>
+                                    <AvatarFallback className='dark:text-[#faf0d6] text-[#050f29] font-semibold transition-all'>
+                                        {(row.getValue('name') as string)
+                                            .split(' ')
+                                            .map((n: string) => n[0])
+                                            .join('')}
+                                    </AvatarFallback>
+                                </Avatar>
+                            </Link>
                             <div className='flex flex-col gap-1'>
                                 <span className='truncate font-medium'>{row.getValue('name')}</span>
                                 <a
