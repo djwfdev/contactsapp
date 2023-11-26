@@ -37,7 +37,7 @@ export const columns: ColumnDef<User>[] = [
                 <div className='flex gap-2'>
                     {row.getValue('name') ? (
                         <div className='flex gap-2'>
-                            <Link href={`/${row.getValue('id')}`}>
+                            <Link href={`/${row.getValue('email')}`}>
                                 <Avatar className='hover:scale-110 hover:cursor-pointer transition-transform'>
                                     <AvatarFallback className='dark:text-[#faf0d6] text-[#050f29] font-semibold transition-all'>
                                         {(row.getValue('name') as string)
