@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { ColumnDef } from '@tanstack/react-table'
 import { ColumnHeader } from './columnheader'
@@ -34,11 +35,13 @@ export const columns: ColumnDef<User>[] = [
         cell: ({ row }) => {
             return (
                 <div className='flex gap-2'>
-                    <Avatar className='hover:scale-110 hover:cursor-pointer transition-transform' onClick={() => alert('test :)')}>
-                        <AvatarFallback className='dark:text-[#faf0d6] text-[#050f29] font-semibold transition-all'>
-                            {row.getValue('name').split(' ').map((n: any[]) => n[0]).join('')}
-                        </AvatarFallback>
-                    </Avatar>
+                    <Link href={`/${row.getValue('email')}`}>
+                        <Avatar className='hover:scale-110 hover:cursor-pointer transition-transform'>
+                            <AvatarFallback className='dark:text-[#faf0d6] text-[#050f29] font-semibold transition-all'>
+                                {row.getValue('name').split(' ').map((n: any[]) => n[0]).join('')}
+                            </AvatarFallback>
+                        </Avatar>
+                    </Link>                
                     <div className='flex flex-col gap-1'>
                         <span className='truncate font-medium'>{row.getValue('name')}</span>
                         <a className='text-sm text-gray-500 truncate hover:text-blue-500 hover:underline' href={`mailto:${row.getValue('email')}`}>

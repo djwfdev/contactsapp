@@ -1,6 +1,6 @@
 import { UserTable } from '@/components/table/usertable'
 import { columns, User } from '@/components/table/columns'
-import { Navbar } from '@/components/navbar/Navbar';
+import { Navbar } from '@/components/navbar/navbar';
 
 async function getData(): Promise<User[]> {
     // Fetching the user data from the API
