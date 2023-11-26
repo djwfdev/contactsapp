@@ -35,19 +35,27 @@ export const columns: ColumnDef<User>[] = [
         cell: ({ row }) => {
             return (
                 <div className='flex gap-2'>
-                    <Link href={`/${row.getValue('email')}`}>
-                        <Avatar className='hover:scale-110 hover:cursor-pointer transition-transform'>
-                            <AvatarFallback className='dark:text-[#faf0d6] text-[#050f29] font-semibold transition-all'>
-                                {row.getValue('name').split(' ').map((n: any[]) => n[0]).join('')}
-                            </AvatarFallback>
-                        </Avatar>
-                    </Link>                
-                    <div className='flex flex-col gap-1'>
-                        <span className='truncate font-medium'>{row.getValue('name')}</span>
-                        <a className='text-sm text-gray-500 truncate hover:text-blue-500 hover:underline' href={`mailto:${row.getValue('email')}`}>
-                            {row.getValue('email')}
-                        </a>
-                    </div>
+                    {row.getValue('name') ? (
+                        <div className='flex gap-2'>
+                            <Avatar className='hover:scale-110 hover:cursor-pointer transition-transform'>
+                                <AvatarFallback className='dark:text-[#faf0d6] text-[#050f29] font-semibold transition-all'>
+                                    {(row.getValue('name') as string)
+                                        .split(' ')
+                                        .map((n: string) => n[0])
+                                        .join('')}
+                                </AvatarFallback>
+                            </Avatar>
+                            <div className='flex flex-col gap-1'>
+                                <span className='truncate font-medium'>{row.getValue('name')}</span>
+                                <a
+                                    className='text-sm text-gray-500 truncate hover:text-blue-500 hover:underline'
+                                    href={`mailto:${row.getValue('email')}`}
+                                >
+                                    {row.getValue('email')}
+                                </a>
+                            </div>
+                        </div>
+                    ): (<></>)}
                 </div>
             )
         },
@@ -73,18 +81,14 @@ export const columns: ColumnDef<User>[] = [
                     {row.getValue('email')}
                 </a>
             )
-        }
+        },
     },
     {
         accessorKey: 'website',
         header: ({ column }) => <ColumnHeader column={column} title='Website' />,
         cell: ({ row }) => {
             return (
-                <a
-                    className='text-blue-500 hover:underline'
-                    href={`https://${row.getValue('website')}`}
-                    target='_blank'
-                >
+                <a className='text-blue-500 hover:underline' href={`https://${row.getValue('website')}`} target='_blank'>
                     {row.getValue('website')}
                 </a>
             )
