@@ -1,32 +1,32 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { ColumnDef } from '@tanstack/react-table'
-import { ColumnHeader } from './columnheader'
+import Link from 'next/link';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { ColumnDef } from '@tanstack/react-table';
+import { ColumnHeader } from './columnheader';
 
 export type User = {
-    id: number
-    name: string
-    email: string
+    id: number;
+    name: string;
+    email: string;
     address: {
-        street: string
-        suite: string
-        city: string
-        zipcode: string
+        street: string;
+        suite: string;
+        city: string;
+        zipcode: string;
         geo: {
-            lat: string
-            lng: string
-        }
-    }
-    phone: string
-    website: string
+            lat: string;
+            lng: string;
+        };
+    };
+    phone: string;
+    website: string;
     company: {
-        name: string
-        catchPhrase: string
-        bs: string
-    }
-}
+        name: string;
+        catchPhrase: string;
+        bs: string;
+    };
+};
 
 export const columns: ColumnDef<User>[] = [
     {
@@ -57,9 +57,11 @@ export const columns: ColumnDef<User>[] = [
                                 </a>
                             </div>
                         </div>
-                    ): (<></>)}
+                    ) : (
+                        <></>
+                    )}
                 </div>
-            )
+            );
         },
     },
     {
@@ -79,10 +81,13 @@ export const columns: ColumnDef<User>[] = [
         header: ({ column }) => <ColumnHeader column={column} title='Email' />,
         cell: ({ row }) => {
             return (
-                <a className='hover:text-blue-500 hover:underline' href={`mailto:${row.getValue('email')}`}>
+                <a
+                    className='hover:text-blue-500 hover:underline'
+                    href={`mailto:${row.getValue('email')}`}
+                >
                     {row.getValue('email')}
                 </a>
-            )
+            );
         },
     },
     {
@@ -90,10 +95,14 @@ export const columns: ColumnDef<User>[] = [
         header: ({ column }) => <ColumnHeader column={column} title='Website' />,
         cell: ({ row }) => {
             return (
-                <a className='text-blue-500 hover:underline' href={`https://${row.getValue('website')}`} target='_blank'>
+                <a
+                    className='text-blue-500 hover:underline'
+                    href={`https://${row.getValue('website')}`}
+                    target='_blank'
+                >
                     {row.getValue('website')}
                 </a>
-            )
+            );
         },
     },
-]
+];

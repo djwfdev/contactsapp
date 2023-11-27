@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons'
-import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/components/ui/button'
-import { ThemeToggle } from '@/components/theme/themetoggle'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import Link from 'next/link';
+import { GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons';
+import { cn } from '@/lib/utils';
+import { buttonVariants } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme/themetoggle';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 export const Navbar = () => {
     return (
@@ -47,5 +47,5 @@ export const Navbar = () => {
                 </div>
             </div>
         </header>
-    )
-}
+    );
+};
